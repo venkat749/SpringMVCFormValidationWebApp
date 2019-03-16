@@ -15,18 +15,18 @@ import org.springframework.stereotype.Component;
 @Scope("request")
 public class User {
 
-	@NotEmpty(message = "Name cannot be empty")
-	@Size(min=6,max=16,message= "Name should have a length between 6 and 16")
-	@Pattern(regexp = "[^0-9]+", message = "Name should not contain numeric value")
+	@NotEmpty
+	@Size(min=6,max=16)
+	@Pattern(regexp = "[^0-9]+")
 	private String name;
-	@Min(value=12,message = "Age cannot be less than 12")
-	@Max(value=60,message = "Age cannot be more than 60")
-	@NotNull(message = "Please enter your age")
+	@Min(value=12)
+	@Max(value=60)
+	@NotNull
 	private Integer age;
-	@NotEmpty(message = "email cannot be left blank")
-	@Email(message="email is not valid")
+	@NotEmpty
+	@Email
 	private String email;
-	@NotEmpty(message = "Enter valid country")
+	@NotEmpty
 	private String country;
 	public void setName(String name) {
 		this.name = name;
