@@ -11,6 +11,8 @@ import javax.validation.constraints.Size;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.springMVC.validator.isValidPassword;
+
 @Component
 @Scope("request")
 public class User {
@@ -19,6 +21,10 @@ public class User {
 	@Size(min=6,max=16)
 	@Pattern(regexp = "[^0-9]+")
 	private String name;
+	@NotNull
+	@NotEmpty
+	@isValidPassword
+	private String password;
 	@Min(value=12)
 	@Max(value=60)
 	@NotNull
@@ -37,11 +43,17 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
 	public String getName() {
 		return name;
+	}
+	public String getPassword() {
+		return password;
 	}
 	public Integer getAge() {
 		return age;
